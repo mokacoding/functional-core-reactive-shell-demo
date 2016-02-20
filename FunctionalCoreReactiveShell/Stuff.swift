@@ -10,6 +10,14 @@ struct Stuff {
   let id: String
   let text: String
   let number: Int
+
+  // TODO: This should not be necessary
+  //
+  init(id: String, text: String, number: Int) {
+    self.id = id
+    self.text = text
+    self.number = number
+  }
 }
 
 // MARK: JSON
