@@ -34,3 +34,21 @@ extension Stuff {
     }
   }
 }
+
+// MARK: Producer
+
+import ReactiveCocoa
+
+enum DomainError: ErrorType {
+  case JSONDecodeFailed
+}
+
+extension Stuff {
+  static func stuff(withJSON json: [String: AnyObject]) -> SignalProducer<Stuff, DomainError> {
+    guard let stuff = Stuff(json: json) else {
+      return SignalProducer(error: .JSONDecodeFailed)
+    }
+
+    return SignalProducer(value: stuff)
+  }
+}
