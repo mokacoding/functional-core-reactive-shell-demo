@@ -30,27 +30,16 @@ class ViewController: UIViewController, UITableViewDataSource {
   }
 
   func loadData() {
-    databaseService.allTheStuff()
-      .observeOn(UIScheduler())
-      .on(
-        failed: { error in
-          // TODO:
-        },
-        next: { [weak self] stuff in
-          guard let strongSelf = self else {
-            return
-          }
-
-          strongSelf.data = stuff
-          strongSelf.tableView.reloadData()
+    SignalProducer(
+      values: [
+        databaseService.allTheStuff(),
+        networkService.performRequest(toEndpoint: .GetStuff)
+          .flatMap(.Latest) { JSON in
+            return Stuff.stuff(withJSON: JSON)
         }
+      ]
       )
-      .start()
-
-    networkService.performRequest(toEndpoint: .GetStuff)
-      .flatMap(.Latest) { JSON in
-        return Stuff.stuff(withJSON: JSON)
-      }
+      .flatten(.Merge)
       .observeOn(UIScheduler())
       .on(
         failed: { error in
