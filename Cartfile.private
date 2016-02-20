@@ -1,0 +1,3 @@
+github "Quick/Quick"
+# Fecthing from master due to Xcode 7.3 beta 3 Swift 2.2 issue
+github "Quick/Nimble" "master"

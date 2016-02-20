@@ -703,50 +703,46 @@ void add_constraint_to_query(realm::Query &query, RLMPropertyType type,
     }
 }
 
-ColumnReference column_reference_from_key_path(RLMSchema *schema, RLMObjectSchema *desc,
+ColumnReference column_reference_from_key_path(RLMSchema *schema, RLMObjectSchema *objectSchema,
                                                NSString *keyPath, bool isAggregate)
 {
+    RLMProperty *property;
     std::vector<size_t> indexes;
-    RLMProperty *prop = nil;
 
-    NSString *prevPath = nil;
+    bool keyPathContainsToManyRelationship = false;
+
     NSUInteger start = 0, length = keyPath.length, end = NSNotFound;
     do {
         end = [keyPath rangeOfString:@"." options:0 range:{start, length - start}].location;
-        NSString *path = [keyPath substringWithRange:{start, end == NSNotFound ? length - start : end - start}];
-        if (prop) {
-            RLMPrecondition(prop.type == RLMPropertyTypeObject || prop.type == RLMPropertyTypeArray,
-                            @"Invalid value", @"Property '%@' is not a link in object of type '%@'", prevPath, desc.className);
-            indexes.push_back(prop.column);
-            prop = desc[path];
-            RLMPrecondition(prop, @"Invalid property name",
-                            @"Property '%@' not found in object of type '%@'", path, desc.className);
-        }
-        else {
-            prop = desc[path];
-            RLMPrecondition(prop, @"Invalid property name",
-                            @"Property '%@' not found in object of type '%@'", path, desc.className);
+        NSString *propertyName = [keyPath substringWithRange:{start, end == NSNotFound ? length - start : end - start}];
+        property = objectSchema[propertyName];
+        RLMPrecondition(property, @"Invalid property name",
+                        @"Property '%@' not found in object of type '%@'", propertyName, objectSchema.className);
 
-            if (isAggregate) {
-                RLMPrecondition(prop.type == RLMPropertyTypeArray,
-                                @"Invalid predicate",
-                                @"Aggregate operations can only be used on RLMArray properties");
-            }
-            else {
-                RLMPrecondition(prop.type != RLMPropertyTypeArray,
-                                @"Invalid predicate",
-                                @"RLMArray predicates must use aggregate operations");
-            }
+        if (property.type == RLMPropertyTypeArray)
+            keyPathContainsToManyRelationship = true;
+
+        if (end != NSNotFound) {
+            RLMPrecondition(property.type == RLMPropertyTypeObject || property.type == RLMPropertyTypeArray,
+                            @"Invalid value", @"Property '%@' is not a link in object of type '%@'", propertyName, objectSchema.className);
+
+            indexes.push_back(property.column);
+            REALM_ASSERT(property.objectClassName);
+            objectSchema = schema[property.objectClassName];
         }
 
-        if (prop.objectClassName) {
-            desc = schema[prop.objectClassName];
-        }
-        prevPath = path;
         start = end + 1;
     } while (end != NSNotFound);
 
-    return ColumnReference(prop, indexes);
+    if (isAggregate && !keyPathContainsToManyRelationship) {
+        @throw RLMPredicateException(@"Invalid predicate",
+                                     @"Aggregate operations can only be used on key paths that include an array property");
+    } else if (!isAggregate && keyPathContainsToManyRelationship) {
+        @throw RLMPredicateException(@"Invalid predicate",
+                                     @"Key paths that include an array property must use aggregate operations");
+    }
+
+    return ColumnReference(property, indexes);
 }
 
 void validate_property_value(const ColumnReference& column,
@@ -934,7 +930,7 @@ void update_query_with_value_expression(RLMSchema *schema,
         return;
     }
 
-    // turn IN into ored together ==
+    // turn "key.path IN collection" into ored together ==. "collection IN key.path" is handled elsewhere.
     if (pred.predicateOperatorType == NSInPredicateOperatorType) {
         process_or_group(query, value, [&](id item) {
             id normalized = value_from_constant_expression_or_value(item);
@@ -1121,9 +1117,19 @@ void update_query_with_predicate(NSPredicate *predicate, RLMSchema *schema,
         }
 
         if (compp.predicateOperatorType == NSBetweenPredicateOperatorType || compp.predicateOperatorType == NSInPredicateOperatorType) {
-            // Inserting an array via %@ gives NSConstantValueExpressionType, but
-            // including it directly gives NSAggregateExpressionType
-            if (exp1Type != NSKeyPathExpressionType || (exp2Type != NSAggregateExpressionType && exp2Type != NSConstantValueExpressionType)) {
+            // Inserting an array via %@ gives NSConstantValueExpressionType, but including it directly gives NSAggregateExpressionType
+            if (exp1Type == NSKeyPathExpressionType && (exp2Type == NSAggregateExpressionType || exp2Type == NSConstantValueExpressionType)) {
+                // "key.path IN %@", "key.path IN {…}", "key.path BETWEEN %@", or "key.path BETWEEN {…}".
+                exp2Type = NSConstantValueExpressionType;
+            }
+            else if (compp.predicateOperatorType == NSInPredicateOperatorType && exp1Type == NSConstantValueExpressionType && exp2Type == NSKeyPathExpressionType) {
+                // "%@ IN key.path" is equivalent to "ANY key.path IN %@". Rewrite the former into the latter.
+                compp = [NSComparisonPredicate predicateWithLeftExpression:compp.rightExpression rightExpression:compp.leftExpression
+                                                                  modifier:NSAnyPredicateModifier type:NSEqualToPredicateOperatorType options:0];
+                exp1Type = NSKeyPathExpressionType;
+                exp2Type = NSConstantValueExpressionType;
+            }
+            else {
                 if (compp.predicateOperatorType == NSBetweenPredicateOperatorType) {
                     @throw RLMPredicateException(@"Invalid predicate",
                                                  @"Predicate with BETWEEN operator must compare a KeyPath with an aggregate with two values");
@@ -1133,7 +1139,6 @@ void update_query_with_predicate(NSPredicate *predicate, RLMSchema *schema,
                                                  @"Predicate with IN operator must compare a KeyPath with an aggregate");
                 }
             }
-            exp2Type = NSConstantValueExpressionType;
         }
 
         if (exp1Type == NSKeyPathExpressionType && exp2Type == NSKeyPathExpressionType) {
