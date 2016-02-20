@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
 class ViewController: UIViewController, UITableViewDataSource {
 
   @IBOutlet var tableView: UITableView!
 
   var data: [Stuff] = []
+
+  let databaseService = DatabaseService()
 
   let cellIdentifier = "Cell"
 
@@ -21,6 +24,27 @@ class ViewController: UIViewController, UITableViewDataSource {
 
     tableView.dataSource = self
     tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+
+    loadData()
+  }
+
+  func loadData() {
+    databaseService.allTheStuff()
+      .observeOn(UIScheduler())
+      .on(
+        failed: { error in
+          // TODO:
+        },
+        next: { [weak self] stuff in
+          guard let strongSelf = self else {
+            return
+          }
+
+          strongSelf.data = stuff
+          strongSelf.tableView.reloadData()
+        }
+      )
+      .start()
   }
 
   // MARK: UITableViewDataSource
