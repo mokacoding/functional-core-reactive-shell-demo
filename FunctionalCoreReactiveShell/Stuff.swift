@@ -9,5 +9,28 @@
 struct Stuff {
   let id: String
   let text: String
-  let num: Int
+  let number: Int
+}
+
+// MARK: JSON
+
+import Argo
+import Curry
+
+extension Stuff: Decodable {
+  static func decode(json: JSON) -> Decoded<Stuff> {
+    return curry(Stuff.init)
+      <^> json <| "id"
+      <*> json <| "text"
+      <*> json <| "number"
+  }
+}
+
+extension Stuff {
+  init?(json: [String: AnyObject]) {
+    switch Stuff.decode(JSON.parse(json)) {
+    case .Success(let value): self = value
+    case .Failure(_): return nil
+    }
+  }
 }

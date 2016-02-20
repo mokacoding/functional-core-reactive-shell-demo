@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		3F050F531C783DD9009778C8 /* Curry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F050F311C783DCB009778C8 /* Curry.framework */; };
 		3F050F541C783DD9009778C8 /* Curry.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F050F311C783DCB009778C8 /* Curry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3F050F581C7848CE009778C8 /* StuffJSONSerializationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F050F571C7848CE009778C8 /* StuffJSONSerializationSpec.swift */; };
 		3F3DBD541C75C792007B2A96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3DBD531C75C792007B2A96 /* AppDelegate.swift */; };
 		3F3DBD561C75C792007B2A96 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3DBD551C75C792007B2A96 /* ViewController.swift */; };
 		3F3DBD591C75C792007B2A96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F3DBD571C75C792007B2A96 /* Main.storyboard */; };
 		3F3DBD5B1C75C792007B2A96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F3DBD5A1C75C792007B2A96 /* Assets.xcassets */; };
 		3F3DBD5E1C75C792007B2A96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F3DBD5C1C75C792007B2A96 /* LaunchScreen.storyboard */; };
-		3F3DBD691C75C792007B2A96 /* FunctionalCoreReactiveShellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3DBD681C75C792007B2A96 /* FunctionalCoreReactiveShellTests.swift */; };
 		3F3DBD741C75C792007B2A96 /* FunctionalCoreReactiveShellUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3DBD731C75C792007B2A96 /* FunctionalCoreReactiveShellUITests.swift */; };
 		3F5EB1481C7836AF00770934 /* Stuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5EB1471C7836AF00770934 /* Stuff.swift */; };
 		3F5EB1AD1C783B2400770934 /* Argo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5EB1551C783A9100770934 /* Argo.framework */; };
@@ -371,6 +371,7 @@
 
 /* Begin PBXFileReference section */
 		3F050F231C783DCA009778C8 /* Curry.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Curry.xcodeproj; path = Carthage/Checkouts/Argo/Carthage/Checkouts/Curry/Curry.xcodeproj; sourceTree = "<group>"; };
+		3F050F571C7848CE009778C8 /* StuffJSONSerializationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StuffJSONSerializationSpec.swift; sourceTree = "<group>"; };
 		3F3DBD501C75C792007B2A96 /* FunctionalCoreReactiveShell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunctionalCoreReactiveShell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F3DBD531C75C792007B2A96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F3DBD551C75C792007B2A96 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -379,7 +380,6 @@
 		3F3DBD5D1C75C792007B2A96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F3DBD5F1C75C792007B2A96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F3DBD641C75C792007B2A96 /* FunctionalCoreReactiveShellTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunctionalCoreReactiveShellTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F3DBD681C75C792007B2A96 /* FunctionalCoreReactiveShellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionalCoreReactiveShellTests.swift; sourceTree = "<group>"; };
 		3F3DBD6A1C75C792007B2A96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F3DBD6F1C75C792007B2A96 /* FunctionalCoreReactiveShellUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunctionalCoreReactiveShellUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F3DBD731C75C792007B2A96 /* FunctionalCoreReactiveShellUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionalCoreReactiveShellUITests.swift; sourceTree = "<group>"; };
@@ -476,8 +476,8 @@
 			isa = PBXGroup;
 			children = (
 				3F5EB1D81C783B9F00770934 /* Frameworks */,
-				3F3DBD681C75C792007B2A96 /* FunctionalCoreReactiveShellTests.swift */,
 				3F3DBD6A1C75C792007B2A96 /* Info.plist */,
+				3F050F571C7848CE009778C8 /* StuffJSONSerializationSpec.swift */,
 			);
 			path = FunctionalCoreReactiveShellTests;
 			sourceTree = "<group>";
@@ -1070,7 +1070,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F3DBD691C75C792007B2A96 /* FunctionalCoreReactiveShellTests.swift in Sources */,
+				3F050F581C7848CE009778C8 /* StuffJSONSerializationSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1256,8 +1256,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = FunctionalCoreReactiveShell/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mokagio.FunctionalCoreReactiveShell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1268,9 +1270,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = FunctionalCoreReactiveShell/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mokagio.FunctionalCoreReactiveShell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1281,10 +1285,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = FunctionalCoreReactiveShellTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mokagio.FunctionalCoreReactiveShellTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FunctionalCoreReactiveShell.app/FunctionalCoreReactiveShell";
 			};
 			name = Debug;
@@ -1293,6 +1299,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = FunctionalCoreReactiveShellTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mokagio.FunctionalCoreReactiveShellTests;
