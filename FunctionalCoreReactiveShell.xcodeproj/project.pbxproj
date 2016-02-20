@@ -27,6 +27,7 @@
 		3F5EB2101C783C3800770934 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5EB2001C783BB400770934 /* Nimble.framework */; };
 		3F8F9A141C785B020061FBCD /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F9A131C785B020061FBCD /* DatabaseService.swift */; };
 		3F8F9A161C785C820061FBCD /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F9A151C785C820061FBCD /* DomainError.swift */; };
+		3F8F9A181C78641B0061FBCD /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F9A171C78641B0061FBCD /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -394,6 +395,7 @@
 		3F5EB1F61C783BB400770934 /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = Carthage/Checkouts/Nimble/Nimble.xcodeproj; sourceTree = SOURCE_ROOT; };
 		3F8F9A131C785B020061FBCD /* DatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		3F8F9A151C785C820061FBCD /* DomainError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
+		3F8F9A171C78641B0061FBCD /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -474,6 +476,7 @@
 				3F5EB1471C7836AF00770934 /* Stuff.swift */,
 				3F8F9A131C785B020061FBCD /* DatabaseService.swift */,
 				3F8F9A151C785C820061FBCD /* DomainError.swift */,
+				3F8F9A171C78641B0061FBCD /* NetworkService.swift */,
 			);
 			path = FunctionalCoreReactiveShell;
 			sourceTree = "<group>";
@@ -1070,6 +1073,7 @@
 				3F5EB1481C7836AF00770934 /* Stuff.swift in Sources */,
 				3F3DBD561C75C792007B2A96 /* ViewController.swift in Sources */,
 				3F8F9A141C785B020061FBCD /* DatabaseService.swift in Sources */,
+				3F8F9A181C78641B0061FBCD /* NetworkService.swift in Sources */,
 				3F3DBD541C75C792007B2A96 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
