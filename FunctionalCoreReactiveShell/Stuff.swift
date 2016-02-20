@@ -48,10 +48,13 @@ extension Stuff {
 import ReactiveCocoa
 
 extension Stuff {
-  static func stuff(withJSON json: [String: AnyObject]) -> SignalProducer<Stuff, DomainError> {
-    guard let stuff = Stuff(json: json) else {
+  static func stuff(withJSON json: [String: AnyObject]) -> SignalProducer<[Stuff], DomainError> {
+    // TODO: Maybe getting the "stuff" part belogns outside this method?
+    guard let rawStuff = json["stuff"] as? [[String: AnyObject]] else {
       return SignalProducer(error: .JSONDecodeFailed)
     }
+
+    let stuff = rawStuff.flatMap { Stuff(json: $0) }
 
     return SignalProducer(value: stuff)
   }
