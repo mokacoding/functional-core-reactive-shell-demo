@@ -1,5 +1,6 @@
 github "thoughtbot/Argo" "v2.2.0"
 github "Quick/Nimble" "e184f22acbf1f7597403c3d89e724813d559f9e0"
+github "AliSoftware/OHHTTPStubs" "4.7.0"
 github "Quick/Quick" "v0.9.1"
 github "antitypical/Result" "1.0.2"
 github "realm/realm-cocoa" "v0.98.2"
