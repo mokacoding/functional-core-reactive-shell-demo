@@ -16,6 +16,7 @@ class ViewController: UIViewController, UITableViewDataSource {
   var data: [Stuff] = []
 
   let databaseService = DatabaseService()
+  let networkService = NetworkService()
 
   let cellIdentifier = "Cell"
 
@@ -30,6 +31,26 @@ class ViewController: UIViewController, UITableViewDataSource {
 
   func loadData() {
     databaseService.allTheStuff()
+      .observeOn(UIScheduler())
+      .on(
+        failed: { error in
+          // TODO:
+        },
+        next: { [weak self] stuff in
+          guard let strongSelf = self else {
+            return
+          }
+
+          strongSelf.data = stuff
+          strongSelf.tableView.reloadData()
+        }
+      )
+      .start()
+
+    networkService.performRequest(toEndpoint: .GetStuff)
+      .flatMap(.Latest) { JSON in
+        return Stuff.stuff(withJSON: JSON)
+      }
       .observeOn(UIScheduler())
       .on(
         failed: { error in
