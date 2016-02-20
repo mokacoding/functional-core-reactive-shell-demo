@@ -14,6 +14,7 @@
 		3F3DBD5E1C75C792007B2A96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F3DBD5C1C75C792007B2A96 /* LaunchScreen.storyboard */; };
 		3F3DBD691C75C792007B2A96 /* FunctionalCoreReactiveShellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3DBD681C75C792007B2A96 /* FunctionalCoreReactiveShellTests.swift */; };
 		3F3DBD741C75C792007B2A96 /* FunctionalCoreReactiveShellUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3DBD731C75C792007B2A96 /* FunctionalCoreReactiveShellUITests.swift */; };
+		3F5EB1481C7836AF00770934 /* Stuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5EB1471C7836AF00770934 /* Stuff.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		3F3DBD6F1C75C792007B2A96 /* FunctionalCoreReactiveShellUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunctionalCoreReactiveShellUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F3DBD731C75C792007B2A96 /* FunctionalCoreReactiveShellUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionalCoreReactiveShellUITests.swift; sourceTree = "<group>"; };
 		3F3DBD751C75C792007B2A96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F5EB1471C7836AF00770934 /* Stuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stuff.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				3F3DBD5A1C75C792007B2A96 /* Assets.xcassets */,
 				3F3DBD5C1C75C792007B2A96 /* LaunchScreen.storyboard */,
 				3F3DBD5F1C75C792007B2A96 /* Info.plist */,
+				3F5EB1471C7836AF00770934 /* Stuff.swift */,
 			);
 			path = FunctionalCoreReactiveShell;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F5EB1481C7836AF00770934 /* Stuff.swift in Sources */,
 				3F3DBD561C75C792007B2A96 /* ViewController.swift in Sources */,
 				3F3DBD541C75C792007B2A96 /* AppDelegate.swift in Sources */,
 			);
