@@ -13,7 +13,7 @@ class ViewController: UIViewController, UITableViewDataSource {
 
   @IBOutlet var tableView: UITableView!
 
-  var data: [Stuff] = []
+  var viewModels: [CellViewModel] = []
 
   let databaseService = DatabaseService()
   let networkService = NetworkService()
@@ -41,6 +41,7 @@ class ViewController: UIViewController, UITableViewDataSource {
       )
       .flatten(.Merge)
       .observeOn(UIScheduler())
+      .map { stuffArray in stuffArray.map { CellViewModel(stuff: $0) } }
       .on(
         failed: { error in
           // TODO:
@@ -50,7 +51,7 @@ class ViewController: UIViewController, UITableViewDataSource {
             return
           }
 
-          strongSelf.data = stuff
+          strongSelf.viewModels = stuff
           strongSelf.tableView.reloadData()
         }
       )
@@ -64,15 +65,15 @@ class ViewController: UIViewController, UITableViewDataSource {
   }
 
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return data.count
+    return viewModels.count
   }
 
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
 
-    let stuff = data[indexPath.row]
+    let viewModel = viewModels[indexPath.row]
 
-    cell.textLabel?.text = stuff.text
+    cell.textLabel?.text = viewModel.text
 
     return cell
   }
