@@ -32,6 +32,7 @@
 		3F8F9A1C1C7932180061FBCD /* CellViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F9A1B1C7932180061FBCD /* CellViewModelSpec.swift */; };
 		3F9249BD1C8512DF00125815 /* RACHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9249BC1C8512DF00125815 /* RACHelpers.swift */; };
 		3F924A1E1C851B2B00125815 /* StuffService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F924A1D1C851B2B00125815 /* StuffService.swift */; };
+		3F924A441C851D9000125815 /* StuffServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F924A431C851D9000125815 /* StuffServiceSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -404,6 +405,7 @@
 		3F8F9A1B1C7932180061FBCD /* CellViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellViewModelSpec.swift; sourceTree = "<group>"; };
 		3F9249BC1C8512DF00125815 /* RACHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACHelpers.swift; sourceTree = "<group>"; };
 		3F924A1D1C851B2B00125815 /* StuffService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StuffService.swift; sourceTree = "<group>"; };
+		3F924A431C851D9000125815 /* StuffServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StuffServiceSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -499,6 +501,7 @@
 				3F3DBD6A1C75C792007B2A96 /* Info.plist */,
 				3F050F571C7848CE009778C8 /* StuffJSONSerializationSpec.swift */,
 				3F8F9A1B1C7932180061FBCD /* CellViewModelSpec.swift */,
+				3F924A431C851D9000125815 /* StuffServiceSpec.swift */,
 			);
 			path = FunctionalCoreReactiveShellTests;
 			sourceTree = "<group>";
@@ -1099,6 +1102,7 @@
 			files = (
 				3F050F581C7848CE009778C8 /* StuffJSONSerializationSpec.swift in Sources */,
 				3F8F9A1C1C7932180061FBCD /* CellViewModelSpec.swift in Sources */,
+				3F924A441C851D9000125815 /* StuffServiceSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
