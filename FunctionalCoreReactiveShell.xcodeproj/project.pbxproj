@@ -30,6 +30,7 @@
 		3F8F9A181C78641B0061FBCD /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F9A171C78641B0061FBCD /* NetworkService.swift */; };
 		3F8F9A1A1C7931910061FBCD /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F9A191C7931910061FBCD /* CellViewModel.swift */; };
 		3F8F9A1C1C7932180061FBCD /* CellViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F9A1B1C7932180061FBCD /* CellViewModelSpec.swift */; };
+		3F9249BD1C8512DF00125815 /* RACHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9249BC1C8512DF00125815 /* RACHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -400,6 +401,7 @@
 		3F8F9A171C78641B0061FBCD /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		3F8F9A191C7931910061FBCD /* CellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		3F8F9A1B1C7932180061FBCD /* CellViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellViewModelSpec.swift; sourceTree = "<group>"; };
+		3F9249BC1C8512DF00125815 /* RACHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -482,6 +484,7 @@
 				3F8F9A151C785C820061FBCD /* DomainError.swift */,
 				3F8F9A171C78641B0061FBCD /* NetworkService.swift */,
 				3F8F9A191C7931910061FBCD /* CellViewModel.swift */,
+				3F9249BC1C8512DF00125815 /* RACHelpers.swift */,
 			);
 			path = FunctionalCoreReactiveShell;
 			sourceTree = "<group>";
@@ -1079,6 +1082,7 @@
 				3F5EB1481C7836AF00770934 /* Stuff.swift in Sources */,
 				3F3DBD561C75C792007B2A96 /* ViewController.swift in Sources */,
 				3F8F9A1A1C7931910061FBCD /* CellViewModel.swift in Sources */,
+				3F9249BD1C8512DF00125815 /* RACHelpers.swift in Sources */,
 				3F8F9A141C785B020061FBCD /* DatabaseService.swift in Sources */,
 				3F8F9A181C78641B0061FBCD /* NetworkService.swift in Sources */,
 				3F3DBD541C75C792007B2A96 /* AppDelegate.swift in Sources */,

@@ -30,18 +30,17 @@ class ViewController: UIViewController, UITableViewDataSource {
   }
 
   func loadData() {
-    SignalProducer(
-      values: [
-        databaseService.allTheStuff(),
-        networkService.performRequest(toEndpoint: .GetStuff)
-          .flatMap(.Latest) { JSON in
-            return Stuff.stuff(withJSON: JSON)
-        }
-      ]
-      )
-      .flatten(.Merge)
-      .observeOn(UIScheduler())
+    merge([
+      databaseService.allTheStuff(),
+
+      networkService.performRequest(toEndpoint: .GetStuff)
+        .flatMapLatest { JSON in
+          return Stuff.stuff(withJSON: JSON)
+      }
+
+      ])
       .map { stuffArray in stuffArray.map { CellViewModel(stuff: $0) } }
+      .observeOnMainThread()
       .on(
         failed: { error in
           // TODO:
