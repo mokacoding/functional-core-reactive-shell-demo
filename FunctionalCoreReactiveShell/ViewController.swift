@@ -42,8 +42,8 @@ class ViewController: UIViewController, UITableViewDataSource {
       .map { stuffArray in stuffArray.map { CellViewModel(stuff: $0) } }
       .observeOnMainThread()
       .on(
-        failed: { error in
-          // TODO:
+        failed: { [weak self] error in
+          self?.presentErrorAlert(error)
         },
         next: { [weak self] stuff in
           guard let strongSelf = self else {
@@ -55,6 +55,20 @@ class ViewController: UIViewController, UITableViewDataSource {
         }
       )
       .start()
+  }
+
+  // MARK: Alert
+
+  func presentErrorAlert(error: ErrorType) {
+    let alertController = UIAlertController(
+      title: "Woooops",
+      message: "\(error)",
+      preferredStyle: .Alert
+    )
+
+    alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: .None))
+
+    presentViewController(alertController, animated: true, completion: .None)
   }
 
   // MARK: UITableViewDataSource

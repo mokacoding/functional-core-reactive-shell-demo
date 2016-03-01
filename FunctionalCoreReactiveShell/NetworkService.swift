@@ -25,6 +25,7 @@ class NetworkService {
           return
         }
 
+//        let result: Result<[String: AnyObject], DomainError> = Result(error: DomainError.JSONDecodeFailed)
         let result: Result<[String: AnyObject], DomainError> = Result(value: strongSelf.dummyData())
         completion(result)
       }
