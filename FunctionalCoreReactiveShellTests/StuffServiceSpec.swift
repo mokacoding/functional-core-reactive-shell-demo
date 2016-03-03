@@ -20,8 +20,7 @@ class StuffServiceSpec: QuickSpec {
       beforeEach {
         // TODO: Implement Realm integration
         let testDatabaseService = DatabaseService()
-        // TODO: Implement proper network service init
-        let testNetworkService = NetworkService()
+        let testNetworkService = NetworkService(baseURL: "test://te.st")
 
         sut = StuffService(networkService: testNetworkService, databaseService: testDatabaseService)
       }

@@ -15,8 +15,9 @@ class ViewController: UIViewController, UITableViewDataSource {
 
   var viewModels: [CellViewModel] = []
 
+  // TODO: Move to AppDelegate or environment coordinator
   let databaseService = DatabaseService()
-  let networkService = NetworkService()
+  let networkService = NetworkService(baseURL: "http://mokacoding.com")
 
   let cellIdentifier = "Cell"
 

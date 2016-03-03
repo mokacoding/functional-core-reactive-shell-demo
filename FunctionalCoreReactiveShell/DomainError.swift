@@ -12,5 +12,7 @@ enum DomainError: ErrorType {
   // TODO: Doesn't RAC have a no error type already
   case NoError
 
+  case BoxedError(NSError)
+  case EmptyResponse
   case JSONDecodeFailed
 }

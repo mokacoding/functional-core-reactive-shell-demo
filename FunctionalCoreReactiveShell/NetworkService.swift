@@ -11,25 +11,71 @@ import Result
 
 enum Endpoint {
   case GetStuff
+
+  var path: String {
+    switch self {
+    case .GetStuff: return "stuff"
+    }
+  }
+
+  var method: String {
+    switch self {
+    case .GetStuff: return "GET"
+    }
+  }
 }
 
 class NetworkService {
 
-  func performRequest(toEndpoint: Endpoint, completion: (Result<[String: AnyObject], DomainError>) -> ()) {
-    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
-    dispatch_after(delayTime, dispatch_get_main_queue()) {
+  private let baseURL: NSURL
+  private let session: NSURLSession
 
-      let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-      dispatch_async(dispatch_get_global_queue(priority, 0)) { [weak self] in
-        guard let strongSelf = self else {
+  init(baseURL baseURLString: String) {
+    guard let _baseURL = NSURL(string: baseURLString) else {
+      preconditionFailure("Provided base URL string is not a valid URL (\(baseURLString))")
+    }
+
+    self.baseURL = _baseURL
+    self.session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+  }
+
+  func performRequest(endpoint: Endpoint, completion: (Result<[String: AnyObject], DomainError>) -> ()) {
+    let mutableRequest = NSMutableURLRequest(URL: baseURL.URLByAppendingPathExtension(endpoint.path))
+    mutableRequest.HTTPMethod = endpoint.method
+
+    let task = session.dataTaskWithRequest(mutableRequest) { data, response, error in
+      var result: Result<[String: AnyObject], DomainError>
+      if let error = error {
+        result = Result(error: DomainError.BoxedError(error))
+
+        completion(result)
+        return
+      }
+
+      guard let data = data else {
+        result = Result(error: DomainError.EmptyResponse)
+
+        completion(result)
+        return
+      }
+
+      do {
+        guard let json = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject] else {
+          result = Result(error: DomainError.JSONDecodeFailed)
+
+          completion(result)
           return
         }
 
-//        let result: Result<[String: AnyObject], DomainError> = Result(error: DomainError.JSONDecodeFailed)
-        let result: Result<[String: AnyObject], DomainError> = Result(value: strongSelf.dummyData())
-        completion(result)
+        result = Result(value: json)
+      } catch {
+        result = Result(error: DomainError.JSONDecodeFailed)
       }
+
+      completion(result)
     }
+
+    task.resume()
   }
 
   private func dummyData() -> [String: AnyObject] {
