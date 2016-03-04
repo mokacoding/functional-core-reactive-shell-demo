@@ -40,7 +40,7 @@ class NetworkService {
   }
 
   func performRequest(endpoint: Endpoint, completion: (Result<[String: AnyObject], DomainError>) -> ()) {
-    let mutableRequest = NSMutableURLRequest(URL: baseURL.URLByAppendingPathExtension(endpoint.path))
+    let mutableRequest = NSMutableURLRequest(URL: baseURL.URLByAppendingPathComponent(endpoint.path))
     mutableRequest.HTTPMethod = endpoint.method
 
     let task = session.dataTaskWithRequest(mutableRequest) { data, response, error in
