@@ -11,10 +11,30 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
+  var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        return true
-    }
+  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    setupNetworkStubs()
+
+    return true
+  }
 }
 
+import OHHTTPStubs
+
+extension AppDelegate {
+
+  func setupNetworkStubs() {
+    stub(isPath("/" + Endpoint.GetStuff.path)) { request in
+      guard let path = OHPathForFile("stuff.json", self.dynamicType) else {
+        preconditionFailure("Could not load fixture file")
+      }
+
+      return OHHTTPStubsResponse(
+        fileAtPath: path,
+        statusCode: 200,
+        headers: ["ContentType": "application/json"]
+      )
+    }
+  }
+}
