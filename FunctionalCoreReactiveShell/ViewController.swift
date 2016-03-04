@@ -42,7 +42,8 @@ class ViewController: UIViewController, UITableViewDataSource {
 
   func loadData() {
     merge([
-      databaseService.allTheStuff(),
+      databaseService.allTheStuff()
+        .map { $0.map { Stuff(realmObject: $0) } },
 
       networkService.performRequest(toEndpoint: .GetStuff)
         .flatMapLatest { JSON in

@@ -17,12 +17,10 @@ class DatabaseService {
     self.realm = realm
   }
 
-  func allTheStuff() -> [Stuff] {
+  func allTheStuff() -> [RealmStuff] {
     let results = realm.objects(RealmStuff.self)
-    // TODO: split and do properly...
-    return (0..<results.count)
-      .map { results[$0] }
-      .map { Stuff(realmObject: $0) }
+    // TODO: I bet there is a better way to go from results to array?
+    return (0..<results.count).map { results[$0] }
   }
 }
 
@@ -32,7 +30,7 @@ import ReactiveCocoa
 
 extension DatabaseService {
 
-  func allTheStuff() -> SignalProducer<[Stuff], DomainError> {
+  func allTheStuff() -> SignalProducer<[RealmStuff], DomainError> {
     return SignalProducer(value: allTheStuff())
   }
 }
