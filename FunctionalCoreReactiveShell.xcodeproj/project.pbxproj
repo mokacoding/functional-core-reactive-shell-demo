@@ -25,6 +25,7 @@
 		3F5EB1B71C783B4000770934 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5EB1A21C783AC800770934 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3F5EB20F1C783C3200770934 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5EB1EB1C783BA600770934 /* Quick.framework */; };
 		3F5EB2101C783C3800770934 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5EB2001C783BB400770934 /* Nimble.framework */; };
+		3F67C82D1C88F2F700DDA0DA /* stuff.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F67C82C1C88F2F700DDA0DA /* stuff.json */; };
 		3F8F9A141C785B020061FBCD /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F9A131C785B020061FBCD /* DatabaseService.swift */; };
 		3F8F9A161C785C820061FBCD /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F9A151C785C820061FBCD /* DomainError.swift */; };
 		3F8F9A181C78641B0061FBCD /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F9A171C78641B0061FBCD /* NetworkService.swift */; };
@@ -398,6 +399,7 @@
 		3F5EB1921C783AC800770934 /* Result.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Result.xcodeproj; path = Carthage/Checkouts/Result/Result.xcodeproj; sourceTree = "<group>"; };
 		3F5EB1BA1C783B9400770934 /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = ../Carthage/Checkouts/Quick/Quick.xcodeproj; sourceTree = "<group>"; };
 		3F5EB1F61C783BB400770934 /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = Carthage/Checkouts/Nimble/Nimble.xcodeproj; sourceTree = SOURCE_ROOT; };
+		3F67C82C1C88F2F700DDA0DA /* stuff.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stuff.json; sourceTree = "<group>"; };
 		3F8F9A131C785B020061FBCD /* DatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		3F8F9A151C785C820061FBCD /* DomainError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
 		3F8F9A171C78641B0061FBCD /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 		3F3DBD471C75C791007B2A96 = {
 			isa = PBXGroup;
 			children = (
+				3F67C8071C88F2E000DDA0DA /* Fixtures */,
 				3F5EB1491C783A7900770934 /* Frameworks */,
 				3F3DBD521C75C792007B2A96 /* FunctionalCoreReactiveShell */,
 				3F3DBD671C75C792007B2A96 /* FunctionalCoreReactiveShellTests */,
@@ -604,6 +607,14 @@
 				3F5EB20A1C783BB400770934 /* NimbleTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		3F67C8071C88F2E000DDA0DA /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				3F67C82C1C88F2F700DDA0DA /* stuff.json */,
+			);
+			path = Fixtures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1028,6 +1039,7 @@
 			files = (
 				3F3DBD5E1C75C792007B2A96 /* LaunchScreen.storyboard in Resources */,
 				3F3DBD5B1C75C792007B2A96 /* Assets.xcassets in Resources */,
+				3F67C82D1C88F2F700DDA0DA /* stuff.json in Resources */,
 				3F3DBD591C75C792007B2A96 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
