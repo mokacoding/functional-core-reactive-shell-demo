@@ -17,6 +17,10 @@
 		3F3DBD5E1C75C792007B2A96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F3DBD5C1C75C792007B2A96 /* LaunchScreen.storyboard */; };
 		3F3DBD741C75C792007B2A96 /* FunctionalCoreReactiveShellUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3DBD731C75C792007B2A96 /* FunctionalCoreReactiveShellUITests.swift */; };
 		3F5094681C891B4E00396EC3 /* NetworkStubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5094671C891B4E00396EC3 /* NetworkStubber.swift */; };
+		3F5094961C891BF500396EC3 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5094941C891BF500396EC3 /* Realm.framework */; };
+		3F5094991C891C0000396EC3 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5094941C891BF500396EC3 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3F50949A1C891C0000396EC3 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5094951C891BF500396EC3 /* RealmSwift.framework */; };
+		3F50949B1C891C0000396EC3 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5094951C891BF500396EC3 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3F5EB1481C7836AF00770934 /* Stuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5EB1471C7836AF00770934 /* Stuff.swift */; };
 		3F5EB1AD1C783B2400770934 /* Argo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5EB1551C783A9100770934 /* Argo.framework */; };
 		3F5EB1AE1C783B2400770934 /* Argo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5EB1551C783A9100770934 /* Argo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -435,7 +439,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				3F5094991C891C0000396EC3 /* Realm.framework in Embed Frameworks */,
 				3F050F541C783DD9009778C8 /* Curry.framework in Embed Frameworks */,
+				3F50949B1C891C0000396EC3 /* RealmSwift.framework in Embed Frameworks */,
 				3F5EB1B71C783B4000770934 /* Result.framework in Embed Frameworks */,
 				3F67C84A1C890B4600DDA0DA /* OHHTTPStubs.framework in Embed Frameworks */,
 				3F5EB1AE1C783B2400770934 /* Argo.framework in Embed Frameworks */,
@@ -462,6 +468,8 @@
 		3F3DBD731C75C792007B2A96 /* FunctionalCoreReactiveShellUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionalCoreReactiveShellUITests.swift; sourceTree = "<group>"; };
 		3F3DBD751C75C792007B2A96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F5094671C891B4E00396EC3 /* NetworkStubber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkStubber.swift; sourceTree = "<group>"; };
+		3F5094941C891BF500396EC3 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Carthage/Checkouts/realm-cocoa/build/ios/swift-2.1.1/Realm.framework"; sourceTree = "<group>"; };
+		3F5094951C891BF500396EC3 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "Carthage/Checkouts/realm-cocoa/build/ios/swift-2.1.1/RealmSwift.framework"; sourceTree = "<group>"; };
 		3F5EB1471C7836AF00770934 /* Stuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stuff.swift; sourceTree = "<group>"; };
 		3F5EB14A1C783A9100770934 /* Argo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Argo.xcodeproj; path = Carthage/Checkouts/Argo/Argo.xcodeproj; sourceTree = "<group>"; };
 		3F5EB1621C783AA400770934 /* ReactiveCocoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveCocoa.xcodeproj; path = Carthage/Checkouts/ReactiveCocoa/ReactiveCocoa.xcodeproj; sourceTree = "<group>"; };
@@ -486,7 +494,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F5094961C891BF500396EC3 /* Realm.framework in Frameworks */,
 				3F050F531C783DD9009778C8 /* Curry.framework in Frameworks */,
+				3F50949A1C891C0000396EC3 /* RealmSwift.framework in Frameworks */,
 				3F5EB1B61C783B4000770934 /* Result.framework in Frameworks */,
 				3F67C8491C890B4600DDA0DA /* OHHTTPStubs.framework in Frameworks */,
 				3F5EB1AD1C783B2400770934 /* Argo.framework in Frameworks */,
@@ -595,6 +605,8 @@
 		3F5EB1491C783A7900770934 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3F5094941C891BF500396EC3 /* Realm.framework */,
+				3F5094951C891BF500396EC3 /* RealmSwift.framework */,
 				3F67C82E1C88F3A500DDA0DA /* OHHTTPStubs.xcodeproj */,
 				3F050F231C783DCA009778C8 /* Curry.xcodeproj */,
 				3F5EB1921C783AC800770934 /* Result.xcodeproj */,
@@ -1460,6 +1472,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Checkouts/realm-cocoa/build/ios/swift-2.1.1",
+				);
 				INFOPLIST_FILE = FunctionalCoreReactiveShell/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1474,6 +1490,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Checkouts/realm-cocoa/build/ios/swift-2.1.1",
+				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = FunctionalCoreReactiveShell/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1488,6 +1508,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Checkouts/realm-cocoa/build/ios/swift-2.1.1";
 				INFOPLIST_FILE = FunctionalCoreReactiveShellTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mokagio.FunctionalCoreReactiveShellTests;
@@ -1502,6 +1523,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Checkouts/realm-cocoa/build/ios/swift-2.1.1";
 				INFOPLIST_FILE = FunctionalCoreReactiveShellTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mokagio.FunctionalCoreReactiveShellTests;
