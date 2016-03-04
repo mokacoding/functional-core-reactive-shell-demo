@@ -22,6 +22,7 @@
 		3F50949A1C891C0000396EC3 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5094951C891BF500396EC3 /* RealmSwift.framework */; };
 		3F50949B1C891C0000396EC3 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5094951C891BF500396EC3 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3F50949D1C893B4000396EC3 /* RealmStuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50949C1C893B4000396EC3 /* RealmStuff.swift */; };
+		3F50949F1C893C0200396EC3 /* StuffFromRealmStuffSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50949E1C893C0200396EC3 /* StuffFromRealmStuffSpec.swift */; };
 		3F5EB1481C7836AF00770934 /* Stuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5EB1471C7836AF00770934 /* Stuff.swift */; };
 		3F5EB1AD1C783B2400770934 /* Argo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5EB1551C783A9100770934 /* Argo.framework */; };
 		3F5EB1AE1C783B2400770934 /* Argo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5EB1551C783A9100770934 /* Argo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -472,6 +473,7 @@
 		3F5094941C891BF500396EC3 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Carthage/Checkouts/realm-cocoa/build/ios/swift-2.1.1/Realm.framework"; sourceTree = "<group>"; };
 		3F5094951C891BF500396EC3 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "Carthage/Checkouts/realm-cocoa/build/ios/swift-2.1.1/RealmSwift.framework"; sourceTree = "<group>"; };
 		3F50949C1C893B4000396EC3 /* RealmStuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmStuff.swift; sourceTree = "<group>"; };
+		3F50949E1C893C0200396EC3 /* StuffFromRealmStuffSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StuffFromRealmStuffSpec.swift; sourceTree = "<group>"; };
 		3F5EB1471C7836AF00770934 /* Stuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stuff.swift; sourceTree = "<group>"; };
 		3F5EB14A1C783A9100770934 /* Argo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Argo.xcodeproj; path = Carthage/Checkouts/Argo/Argo.xcodeproj; sourceTree = "<group>"; };
 		3F5EB1621C783AA400770934 /* ReactiveCocoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveCocoa.xcodeproj; path = Carthage/Checkouts/ReactiveCocoa/ReactiveCocoa.xcodeproj; sourceTree = "<group>"; };
@@ -592,6 +594,7 @@
 				3F050F571C7848CE009778C8 /* StuffJSONSerializationSpec.swift */,
 				3F8F9A1B1C7932180061FBCD /* CellViewModelSpec.swift */,
 				3F924A431C851D9000125815 /* StuffServiceSpec.swift */,
+				3F50949E1C893C0200396EC3 /* StuffFromRealmStuffSpec.swift */,
 			);
 			path = FunctionalCoreReactiveShellTests;
 			sourceTree = "<group>";
@@ -1281,6 +1284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F50949F1C893C0200396EC3 /* StuffFromRealmStuffSpec.swift in Sources */,
 				3F050F581C7848CE009778C8 /* StuffJSONSerializationSpec.swift in Sources */,
 				3F8F9A1C1C7932180061FBCD /* CellViewModelSpec.swift in Sources */,
 				3F924A441C851D9000125815 /* StuffServiceSpec.swift in Sources */,

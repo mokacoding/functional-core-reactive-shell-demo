@@ -43,6 +43,14 @@ extension Stuff {
   }
 }
 
+extension Stuff {
+  init(realmObject: RealmStuff) {
+    id = realmObject.id
+    text = realmObject.text
+    number = realmObject.number
+  }
+}
+
 // MARK: Producer
 
 import ReactiveCocoa
