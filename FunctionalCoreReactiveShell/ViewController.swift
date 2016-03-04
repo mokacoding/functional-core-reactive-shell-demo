@@ -8,6 +8,7 @@
 
 import UIKit
 import ReactiveCocoa
+import RealmSwift
 
 class ViewController: UIViewController, UITableViewDataSource {
 
@@ -16,7 +17,16 @@ class ViewController: UIViewController, UITableViewDataSource {
   var viewModels: [CellViewModel] = []
 
   // TODO: Move to AppDelegate or environment coordinator
-  let databaseService = DatabaseService()
+  var databaseService: DatabaseService = { () -> DatabaseService in
+    do {
+      let configuration = Realm.Configuration.defaultConfiguration
+      let realm = try Realm(configuration: configuration)
+
+      return DatabaseService(realm: realm)
+    } catch {
+      preconditionFailure("Could not initialize default Reaml")
+    }
+  }()
   let networkService = NetworkService(baseURL: "https://mokacoding.com")
 
   let cellIdentifier = "Cell"

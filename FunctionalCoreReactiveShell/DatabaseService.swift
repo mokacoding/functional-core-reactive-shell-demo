@@ -7,15 +7,22 @@
 //
 
 import Foundation
+import RealmSwift
 
 class DatabaseService {
 
+  let realm: Realm
+
+  init(realm: Realm) {
+    self.realm = realm
+  }
+
   func allTheStuff() -> [Stuff] {
-    return [
-      Stuff(id: "0", text: "local value first", number: 123),
-      Stuff(id: "1", text: "local value second", number: 456),
-      Stuff(id: "2", text: "local value third", number: 789),
-    ]
+    let results = realm.objects(RealmStuff.self)
+    // TODO: split and do properly...
+    return (0..<results.count)
+      .map { results[$0] }
+      .map { Stuff(realmObject: $0) }
   }
 }
 
