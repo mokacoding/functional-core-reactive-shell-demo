@@ -8,6 +8,7 @@
 
 import Quick
 import Nimble
+import OHHTTPStubs
 @testable import FunctionalCoreReactiveShell
 
 class StuffServiceSpec: QuickSpec {
@@ -27,13 +28,27 @@ class StuffServiceSpec: QuickSpec {
 
       context("when there is data in the database") {
         it("calls the callback with that data immediately") {
+          var fetchedStuff: [Stuff]? = []
+          sut.fetchStuff { stuff, error in
+            fetchedStuff = stuff
+          }
 
+          expect(fetchedStuff?.count).toEventually(equal(3))
         }
       }
 
       context("when the network returns data successfully") {
         it("eventually calls the callback with the decoded data") {
+          NetworkStubber.stubGetStuffSuccess()
 
+          var fetchedStuff: [Stuff]? = []
+          sut.fetchStuff { stuff, error in
+            fetchedStuff = stuff
+          }
+
+          expect(fetchedStuff?.count).toEventually(equal(21))
+
+          OHHTTPStubs.removeAllStubs()
         }
       }
     }
