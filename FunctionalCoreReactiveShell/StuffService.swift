@@ -19,9 +19,8 @@ class StuffService {
   }
 
   func fetchStuff(callback: ([Stuff]?, DomainError?) -> ()) {
-    if let persistedStuff: [Stuff] = databaseService.allTheStuff() {
-      callback(persistedStuff, .None)
-    }
+    let persistedStuff: [Stuff] = databaseService.allTheStuff().map { Stuff(realmObject: $0) }
+    callback(persistedStuff, .None)
 
     networkService.performRequest(.GetStuff) { result in
       switch result {
