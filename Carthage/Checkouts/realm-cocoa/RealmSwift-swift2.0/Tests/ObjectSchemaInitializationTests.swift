@@ -196,7 +196,8 @@ class ObjectSchemaInitializationTests: TestCase {
 }
 
 class SwiftFakeObject: NSObject {
-    dynamic class func primaryKey() -> String! { return nil }
+    dynamic class func objectUtilClass(isSwift: Bool) -> AnyClass { return ObjectUtil.self }
+    dynamic class func primaryKey() -> String? { return nil }
     dynamic class func ignoredProperties() -> [String] { return [] }
     dynamic class func indexedProperties() -> [String] { return [] }
 }
@@ -233,7 +234,7 @@ class SwiftObjectWithStruct: SwiftFakeObject {
 class SwiftObjectWithDatePrimaryKey: SwiftFakeObject {
     dynamic var date = NSDate()
 
-    dynamic override class func primaryKey() -> String! {
+    dynamic override class func primaryKey() -> String? {
         return "date"
     }
 }

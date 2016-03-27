@@ -100,7 +100,9 @@ class RealmTests: TestCase {
     #if DEBUG
     func testFileFormatUpgradeRequiredButDisabled() {
         var config = Realm.Configuration()
-        config.path = NSBundle(forClass: RealmTests.self).pathForResource("fileformat-pre-null.realm", ofType: nil)!
+        var bundledRealmPath = NSBundle(forClass: RealmTests.self).pathForResource("fileformat-pre-null.realm",
+                                                                                   ofType: nil)!
+        try! NSFileManager.defaultManager.copyItemAtPath(bundledRealmPath, toPath: config.path)
         config.disableFormatUpgrade = true
         assertFails(Error.FileFormatUpgradeRequired) {
             try Realm(configuration: config)
@@ -208,7 +210,7 @@ class RealmTests: TestCase {
         let object = try! Realm().dynamicCreate("SwiftStringObject", value: ["1"])
         try! Realm().commitWrite()
 
-        XCTAssertNotNil(object,"Dynamic Object Creation Failed")
+        XCTAssertNotNil(object, "Dynamic Object Creation Failed")
 
         let stringVal = object["stringCol"] as! String
         XCTAssertEqual(stringVal, "1", "Object Subscripting Failed")
