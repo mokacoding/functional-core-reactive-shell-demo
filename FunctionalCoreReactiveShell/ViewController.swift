@@ -12,6 +12,11 @@ import RealmSwift
 
 class ViewController: UIViewController, UITableViewDataSource {
 
+  enum Effect {
+    case UpdateView(viewModels: [CellViewModel])
+    case PresentAlert(error: ErrorType)
+  }
+
   @IBOutlet var tableView: UITableView!
 
   var viewModels: [CellViewModel] = []
@@ -52,21 +57,29 @@ class ViewController: UIViewController, UITableViewDataSource {
 
       ])
       .map { stuffArray in stuffArray.map { CellViewModel(stuff: $0) } }
+      .map { viewModels in Effect.UpdateView(viewModels: viewModels) }
       .observeOnMainThread()
       .on(
         failed: { [weak self] error in
-          self?.presentErrorAlert(error)
+          self?.performEffect(Effect.PresentAlert(error: error))
         },
-        next: { [weak self] stuff in
-          guard let strongSelf = self else {
-            return
-          }
-
-          strongSelf.viewModels = stuff
-          strongSelf.tableView.reloadData()
+        next: { [weak self] effect in
+          self?.performEffect(effect)
         }
       )
       .start()
+  }
+
+  func performEffect(effect: Effect) {
+    switch effect {
+
+    case .UpdateView(let viewModels):
+      self.viewModels = viewModels
+      tableView.reloadData()
+
+    case .PresentAlert(let error):
+      presentErrorAlert(error)
+    }
   }
 
   // MARK: Alert

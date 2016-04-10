@@ -59,18 +59,6 @@ func stuffWithRealmObject(object: RealmStuff) -> Stuff {
   return Stuff(realmObject: object)
 }
 
-import UIKit
-
-enum Effect {
-  case PresentAlertController(UIAlertController)
-}
-
-func effectForError(error: ErrorType) -> Effect {
-  return Effect.PresentAlertController(UIAlertController(title: "", message: "", preferredStyle: .Alert))
-}
-
-// MARK: Producer
-
 import ReactiveCocoa
 
 extension Stuff {
