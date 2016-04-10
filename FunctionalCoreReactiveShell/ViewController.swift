@@ -42,7 +42,7 @@ class ViewController: UIViewController, UITableViewDataSource {
 
   func loadData() {
     merge([
-      databaseService.allTheStuff()
+      databaseService.allStuff()
         .map { $0.map { Stuff(realmObject: $0) } },
 
       networkService.performRequest(toEndpoint: .GetStuff)
