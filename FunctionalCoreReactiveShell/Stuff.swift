@@ -74,7 +74,7 @@ func effectForError(error: ErrorType) -> Effect {
 import ReactiveCocoa
 
 extension Stuff {
-  static func stuff(withJSON json: [String: AnyObject]) -> SignalProducer<[Stuff], DomainError> {
+  static func stuffProducer(withJSON json: [String: AnyObject]) -> SignalProducer<[Stuff], DomainError> {
     // TODO: Maybe getting the "stuff" part belogns outside this method?
     guard let rawStuff = json["stuff"] as? [[String: AnyObject]] else {
       return SignalProducer(error: .JSONDecodeFailed)

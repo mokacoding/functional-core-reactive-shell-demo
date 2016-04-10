@@ -47,7 +47,7 @@ class ViewController: UIViewController, UITableViewDataSource {
 
       networkService.performRequest(toEndpoint: .GetStuff)
         .flatMapLatest { JSON in
-          return Stuff.stuff(withJSON: JSON)
+          return Stuff.stuffProducer(withJSON: JSON)
       }
 
       ])
