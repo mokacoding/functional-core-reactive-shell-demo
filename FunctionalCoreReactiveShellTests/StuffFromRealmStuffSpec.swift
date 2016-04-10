@@ -14,7 +14,29 @@ class StuffFromRealmStuffSpec: QuickSpec {
   override func spec() {
 
     describe("Stuff model from Realm object") {
-      // TODO:
+      it("sets its properties based on the Realm object one") {
+        let realmObject = RealmStuff.test_fixture()
+
+        let sut = Stuff(realmObject: realmObject)
+
+        expect(sut.id) == realmObject.id
+        expect(sut.number) == realmObject.number
+        expect(sut.text) == realmObject.text
+      }
     }
+  }
+}
+
+extension RealmStuff {
+  static func test_fixture(
+    id: String = "any id",
+    number: Int = 123,
+    text: String = "any text"
+    ) -> RealmStuff {
+    let realmObject = RealmStuff()
+    realmObject.id = id
+    realmObject.number = number
+    realmObject.text = text
+    return realmObject
   }
 }
