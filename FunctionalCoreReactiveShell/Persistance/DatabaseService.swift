@@ -22,6 +22,27 @@ class DatabaseService {
     // TODO: I bet there is a better way to go from results to array?
     return (0..<results.count).map { results[$0] }
   }
+
+  func persistStuff(newStuff: [RealmStuff], updatedAfter date: NSDate) {
+  }
+
+  struct DatabaseAction {
+    enum Mode {
+      case Insert
+      case Update
+      case Delete
+    }
+
+    let objects: [RealmStuff]
+    let mode: Mode
+  }
+
+  func persistStuffAction(newStuff: [RealmStuff], updatedAfter date: NSDate) -> DatabaseAction {
+    return DatabaseAction(objects: newStuff, mode: .Update)
+  }
+
+  func performAction(action: DatabaseAction) {
+  }
 }
 
 // MARK: Reactive Extension
