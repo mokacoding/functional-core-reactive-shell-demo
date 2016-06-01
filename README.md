@@ -2,7 +2,7 @@
 
 This is the demo code used in my "[Functional Core, Reactive Shell](http://www.slideshare.net/GiovanniLodi2/functional-core-reactive-shell)" talk.
 
-Checkout the companion [blogpost](http://mokacoding.com/functional-core-reactive-shell) for more insight on this approach.
+Checkout the companion [blogpost](http://www.mokacoding.com/blog/functional-core-reactive-shell/) for more insight on this approach.
 
 ---
 
